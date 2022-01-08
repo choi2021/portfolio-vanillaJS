@@ -13,11 +13,6 @@ document.addEventListener("scroll", (e) => {
   }
 });
 
-function scrollIntoView(selector) {
-  const scrollTo = document.querySelector(selector);
-  scrollTo.scrollIntoView({ behavior: "smooth" });
-}
-
 // scroll to the section
 
 function activeControl(target) {
@@ -34,12 +29,14 @@ menu.addEventListener("click", (e) => {
     return;
   }
   activeControl(e.target);
-  scrollIntoView(section);
+  const scrollTo = document.querySelector(section);
+  scrollTo.scrollIntoView({ behavior: "smooth" });
 });
 
-// Handle click on contact button on home
+// contact button
 
 const contactBtn = document.querySelector(".home__contact");
 contactBtn.addEventListener("click", () => {
-  scrollIntoView(".contact");
+  const contact = document.querySelector(".contact");
+  contact.scrollIntoView({ behavior: "smooth" });
 });

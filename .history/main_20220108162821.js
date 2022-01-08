@@ -14,7 +14,7 @@ document.addEventListener("scroll", (e) => {
 });
 
 function scrollIntoView(selector) {
-  const scrollTo = document.querySelector(selector);
+  const scrollTo = document.querySelector(section);
   scrollTo.scrollIntoView({ behavior: "smooth" });
 }
 
