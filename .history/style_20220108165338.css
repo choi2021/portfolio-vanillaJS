@@ -549,12 +549,6 @@ button {
   border: var(--blue-color) 4px solid;
   opacity: 0;
   pointer-events: none;
-  transition: opacity ease-in 300ms;
-}
-
-.upBtn.visible {
-  opacity: 1;
-  pointer-events: auto;
 }
 
 @media screen and (min-width: 768px) and (max-width: 1070px) {

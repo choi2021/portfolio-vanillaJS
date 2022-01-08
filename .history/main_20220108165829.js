@@ -51,13 +51,13 @@ document.addEventListener("scroll", () => {
   const ratio = 1 - window.scrollY / homeHeight;
   if (ratio < 0) {
     home.style.opacity = 0;
-    upBtn.classList.add("visible");
+    upBtn.classList.add("active");
   } else if (ratio >= 0.5) {
     home.style.opacity = 1;
-    upBtn.classList.remove("visible");
+    upBtn.classList.remove("active");
   } else {
     home.style.opacity = 1 - window.scrollY / homeHeight;
-    upBtn.classList.remove("visible");
+    upBtn.classList.remove("active");
   }
 });
 

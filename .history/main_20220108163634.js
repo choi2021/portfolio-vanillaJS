@@ -44,26 +44,13 @@ contactBtn.addEventListener("click", () => {
   scrollIntoView(".contact");
 });
 
-// make home fade to transparent as the window scrolls down
-const home = document.querySelector(".home");
-const homeHeight = home.getBoundingClientRect().height;
+// transparent home
+
 document.addEventListener("scroll", () => {
-  const ratio = 1 - window.scrollY / homeHeight;
-  if (ratio < 0) {
-    home.style.opacity = 0;
-    upBtn.classList.add("visible");
-  } else if (ratio >= 0.5) {
-    home.style.opacity = 1;
-    upBtn.classList.remove("visible");
-  } else {
-    home.style.opacity = 1 - window.scrollY / homeHeight;
-    upBtn.classList.remove("visible");
-  }
-});
-
-// upBtn added
-
-const upBtn = document.querySelector(".upBtn");
-upBtn.addEventListener("click", () => {
-  scrollIntoView(".home");
-});
+  const home = document.querySelector(".home");
+const homeHeight = home.getBoundingClientRect().height;
+if (1 - window.scrollY / homeHeight < 0) {
+  home.style.opacity = 0;
+}
+home.style.opacity = 1 - window.scrollY / homeHeight;  
+}
