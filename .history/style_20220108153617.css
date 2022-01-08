@@ -91,7 +91,6 @@ button {
   width: 100%;
   padding: 12px var(--base-space);
   transition: all ease-in 300ms;
-  z-index: 1000;
 }
 
 .navbar.withBGColor {

@@ -21,6 +21,16 @@ function activeControl(target) {
   target.classList.add("active");
 }
 
+function scrollInto(className) {
+  console.log(className);
+  const section = document.querySelector(className);
+  section.scrollIntoView({
+    behavior: "smooth",
+    block: "center",
+    inline: "center",
+  });
+}
+
 const menu = document.querySelector(".navbar__menu");
 menu.addEventListener("click", (e) => {
   const dataset = e.target.dataset;
@@ -29,6 +39,5 @@ menu.addEventListener("click", (e) => {
     return;
   }
   activeControl(e.target);
-  const scrollTo = document.querySelector(section);
-  scrollTo.scrollIntoView({ behavior: "smooth" });
+  scrollInto(section);
 });

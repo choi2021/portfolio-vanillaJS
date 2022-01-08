@@ -90,17 +90,10 @@ button {
   top: 0;
   width: 100%;
   padding: 12px var(--base-space);
-  transition: all ease-in 300ms;
-  z-index: 1000;
-}
-
-.navbar.withBGColor {
-  background-color: var(--dark-blue-color);
 }
 
 .navbar__logo {
   display: flex;
-  align-items: center;
 }
 
 .navbar__logo img {
@@ -137,15 +130,6 @@ button {
 .navbar__menu__item.active {
   background-color: var(--white-color);
   color: var(--dark-blue-color);
-}
-
-.navbar__toggleBtn {
-  display: none;
-  position: absolute;
-  top: 20px;
-  right: 24px;
-  font-size: var(--font-medium);
-  color: var(--blue-color);
 }
 
 /* Home */
@@ -470,11 +454,11 @@ button {
   margin-bottom: var(--base-space);
 }
 
-.testimonial:nth-child(odd) .testimonial__avatar {
+.testimonial__avatar:nth-child(odd) {
   margin-right: 24px;
 }
 
-.testimonial:nth-child(even) .testimonial__avatar {
+.testimonial__avatar :nth-child(even) {
   margin-left: 24px;
 }
 
@@ -538,50 +522,13 @@ button {
   font-size: var(--font-regular);
 }
 
-@media screen and (min-width: 768px) and (max-width: 1070px) {
-  :root {
-    /* Space */
-    --base-space: 24px;
-
-    /* Font weight */
-    --weight-bold: 700;
-    --weight-semi-bold: 600;
-    --weight-regular: 400;
-
-    /* Font-size */
-    --font-large: 36px;
-    --font-medium: 24px;
-    --font-regular: 16px;
-    --font-small: 12px;
-
-    /* size */
-    --count-size: 32px;
-    --border-size: 8px;
-    --logo-size: 43px;
-    --avatar-size: 250px;
-    --stack-size: 180px;
-    --project-width: 280px;
-    --project-height: 250px;
-    --testimonial-size: 80px;
-  }
-
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .navbar__menu {
-    flex-direction: column;
-    width: 100%;
-    text-align: center;
-    display: none;
-  }
-
-  .navbar__toggleBtn {
-    display: block;
-    position: absolute;
-    cursor: pointer;
-  }
+.menu__bar {
+  opacity: 0;
+  position: absolute;
+  top: 0px;
+  right: 12px;
+  font-size: var(--font-large);
+  color: var(--blue-color);
 }
 
 @media screen and (max-width: 768px) {
@@ -608,43 +555,17 @@ button {
     --stack-size: 180px;
     --project-width: 280px;
     --project-height: 250px;
-    --testimonial-size: 80px;
-  }
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
+    --testimonial-size: 250px;
   }
 
   .navbar__menu {
     flex-direction: column;
-    width: 100%;
-    text-align: center;
     display: none;
   }
 
-  .navbar__toggleBtn {
-    display: block;
+  .menu__bar {
+    opacity: 1;
     position: absolute;
-    cursor: pointer;
-  }
-
-  .about__stacks {
-    flex-direction: column;
-  }
-
-  .stack {
-    margin-bottom: var(--base-space);
-  }
-
-  .skillset {
-    flex-direction: column;
-  }
-
-  .category__btn {
-    padding: 4px 8px;
-  }
-
-  .project {
-    flex-grow: 1;
+    top: 0px;
   }
 }

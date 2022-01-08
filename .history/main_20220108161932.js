@@ -30,5 +30,9 @@ menu.addEventListener("click", (e) => {
   }
   activeControl(e.target);
   const scrollTo = document.querySelector(section);
-  scrollTo.scrollIntoView({ behavior: "smooth" });
+  scrollTo.scrollIntoView({
+    behavior: "smooth",
+    block: "center",
+    inline: "center",
+  });
 });

@@ -91,7 +91,6 @@ button {
   width: 100%;
   padding: 12px var(--base-space);
   transition: all ease-in 300ms;
-  z-index: 1000;
 }
 
 .navbar.withBGColor {
@@ -142,7 +141,7 @@ button {
 .navbar__toggleBtn {
   display: none;
   position: absolute;
-  top: 20px;
+  top: 24px;
   right: 24px;
   font-size: var(--font-medium);
   color: var(--blue-color);

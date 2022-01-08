@@ -14,12 +14,12 @@ document.addEventListener("scroll", (e) => {
 });
 
 // scroll to the section
-
-function activeControl(target) {
-  const activated = document.querySelector(".navbar__menu__item.active");
-  activated.classList.remove("active");
-  target.classList.add("active");
-}
+const home = document.querySelector(".home");
+const about = document.querySelector(".about");
+const skills = document.querySelector(".skills");
+const work = document.querySelector(".work");
+const testimonials = document.querySelector(".testimonials");
+const contact = document.querySelector(".contact");
 
 const menu = document.querySelector(".navbar__menu");
 menu.addEventListener("click", (e) => {
@@ -28,7 +28,9 @@ menu.addEventListener("click", (e) => {
   if (section === undefined) {
     return;
   }
-  activeControl(e.target);
-  const scrollTo = document.querySelector(section);
-  scrollTo.scrollIntoView({ behavior: "smooth" });
+  switch (section) {
+    case "home": {
+      home.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }
 });
