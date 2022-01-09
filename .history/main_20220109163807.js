@@ -87,14 +87,14 @@ workBtns.addEventListener("click", (e) => {
     return;
   }
   projectContainer.classList.add("anim-out");
-  setTimeout(() => {
+  setInterval(() => {
     projectContainer.classList.remove("anim-out");
-    projectList.forEach((item) => {
-      if (value === "all" || value == item.dataset.value) {
-        item.classList.remove("invisible");
-      } else {
-        item.classList.add("invisible");
-      }
-    });
   }, 300);
+  projectList.forEach((item) => {
+    if (value === "all" || value == item.dataset.value) {
+      item.classList.remove("invisible");
+    } else {
+      item.classList.add("invisible");
+    }
+  });
 });

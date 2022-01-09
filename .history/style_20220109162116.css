@@ -398,13 +398,6 @@ button {
   justify-content: center;
   flex-wrap: wrap;
   width: 100%;
-  opacity: 1;
-  transition: all ease-in-out 300ms;
-}
-
-.work__projects.anim-out {
-  opacity: 0;
-  transform: scale(0.8) translateY(40px);
 }
 
 .project {
@@ -413,10 +406,20 @@ button {
   height: var(--project-height);
   margin-right: calc(0.5 * var(--base-space));
   margin-bottom: calc(0.5 * var(--base-space));
+  animation: showProject 1s;
 }
 
 .project.invisible {
   display: none;
+}
+
+@keyframes showProject {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .project img {

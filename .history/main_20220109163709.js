@@ -87,8 +87,7 @@ workBtns.addEventListener("click", (e) => {
     return;
   }
   projectContainer.classList.add("anim-out");
-  setTimeout(() => {
-    projectContainer.classList.remove("anim-out");
+  setInterval(() => {
     projectList.forEach((item) => {
       if (value === "all" || value == item.dataset.value) {
         item.classList.remove("invisible");
@@ -96,5 +95,6 @@ workBtns.addEventListener("click", (e) => {
         item.classList.add("invisible");
       }
     });
-  }, 300);
+    projectContainer.classList.remove("anim-out");
+  }, 600);
 });

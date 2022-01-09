@@ -77,7 +77,7 @@ function activateCategory(value) {
 }
 
 const workBtns = document.querySelector(".work__categories");
-const projectContainer = document.querySelector(".work__projects");
+const projectContainer = document.querySelector(".work__proejects");
 const projectList = document.querySelectorAll(`.project`);
 workBtns.addEventListener("click", (e) => {
   const target = e.target;
@@ -87,14 +87,11 @@ workBtns.addEventListener("click", (e) => {
     return;
   }
   projectContainer.classList.add("anim-out");
-  setTimeout(() => {
-    projectContainer.classList.remove("anim-out");
-    projectList.forEach((item) => {
-      if (value === "all" || value == item.dataset.value) {
-        item.classList.remove("invisible");
-      } else {
-        item.classList.add("invisible");
-      }
-    });
-  }, 300);
+  projectList.forEach((item) => {
+    if (value === "all" || value == item.dataset.value) {
+      item.classList.remove("invisible");
+    } else {
+      item.classList.add("invisible");
+    }
+  });
 });

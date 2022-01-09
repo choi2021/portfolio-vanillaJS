@@ -87,7 +87,7 @@ workBtns.addEventListener("click", (e) => {
     return;
   }
   projectContainer.classList.add("anim-out");
-  setTimeout(() => {
+  setInterval(() => {
     projectContainer.classList.remove("anim-out");
     projectList.forEach((item) => {
       if (value === "all" || value == item.dataset.value) {

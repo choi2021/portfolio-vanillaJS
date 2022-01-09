@@ -70,31 +70,40 @@ upBtn.addEventListener("click", () => {
 
 // project filtering
 
-function activateCategory(value) {
+function activateCategory(btn) {
   const activated = document.querySelector(".category__btn.active");
   activated.classList.remove("active");
-  const btn = btn.classList.add("active");
+  btn.classList.add("active");
 }
 
-const workBtns = document.querySelector(".work__categories");
-const projectContainer = document.querySelector(".work__projects");
-const projectList = document.querySelectorAll(`.project`);
-workBtns.addEventListener("click", (e) => {
-  const target = e.target;
-  const dataset = e.target.dataset;
-  const value = dataset.value || target.parentNode.dataset.value;
-  if (value === undefined) {
-    return;
-  }
-  projectContainer.classList.add("anim-out");
-  setTimeout(() => {
-    projectContainer.classList.remove("anim-out");
+function filterCategory(value) {
+  console.log(value);
+  const projectList = document.querySelectorAll(`.project`);
+  if (value === "all") {
+    projectList.forEach((item) => item.classList.remove("invisible"));
+  } else {
     projectList.forEach((item) => {
-      if (value === "all" || value == item.dataset.value) {
-        item.classList.remove("invisible");
-      } else {
+      const dataValue = item.dataset.value;
+      if (dataValue !== value) {
         item.classList.add("invisible");
       }
     });
-  }, 300);
+  }
+}
+
+const categories = document.querySelector(".work__categories");
+categories.addEventListener("click", (e) => {
+  const target = e.target;
+  const dataset = e.target.dataset;
+  const value = dataset.value;
+  if (value === undefined && target.parentNode.dataset.value === undefined) {
+    return;
+  } else if (value === undefined) {
+    const parent = target.parentNode;
+    const parentValue = parent.dataset.value;
+    activateCategory(parent);
+    filterCategory(parentValue);
+  }
+  activateCategory(target);
+  filterCategory(value);
 });

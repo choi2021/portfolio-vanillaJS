@@ -70,31 +70,42 @@ upBtn.addEventListener("click", () => {
 
 // project filtering
 
-function activateCategory(value) {
+function activateCategory(btn) {
   const activated = document.querySelector(".category__btn.active");
   activated.classList.remove("active");
-  const btn = btn.classList.add("active");
+  btn.classList.add("active");
+}
+
+function filterCategory(value) {
+  console.log(value);
+  if (value === "all") {
+    projectList.forEach((item) => item.classList.remove("invisible"));
+  } else {
+    projectList.forEach((item) => {
+      const dataValue = item.dataset.value;
+      if (dataValue !== value) {
+        item.classList.add("invisible");
+      } else {
+        item.classList.remove("invisible");
+      }
+    });
+  }
 }
 
 const workBtns = document.querySelector(".work__categories");
-const projectContainer = document.querySelector(".work__projects");
 const projectList = document.querySelectorAll(`.project`);
 workBtns.addEventListener("click", (e) => {
   const target = e.target;
   const dataset = e.target.dataset;
-  const value = dataset.value || target.parentNode.dataset.value;
-  if (value === undefined) {
+  const value = dataset.value;
+  if (value === undefined && target.parentNode.dataset.value === undefined) {
     return;
+  } else if (value === undefined) {
+    const parent = target.parentNode;
+    const parentValue = parent.dataset.value;
+    activateCategory(parent);
+    filterCategory(parentValue);
   }
-  projectContainer.classList.add("anim-out");
-  setTimeout(() => {
-    projectContainer.classList.remove("anim-out");
-    projectList.forEach((item) => {
-      if (value === "all" || value == item.dataset.value) {
-        item.classList.remove("invisible");
-      } else {
-        item.classList.add("invisible");
-      }
-    });
-  }, 300);
+  activateCategory(target);
+  filterCategory(value);
 });

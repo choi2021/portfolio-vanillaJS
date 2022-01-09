@@ -76,8 +76,23 @@ function activateCategory(value) {
   const btn = btn.classList.add("active");
 }
 
+function filterCategory(value) {
+  console.log(value);
+  if (value === "all") {
+    projectList.forEach((item) => item.classList.remove("invisible"));
+  } else {
+    projectList.forEach((item) => {
+      const dataValue = item.dataset.value;
+      if (dataValue !== value) {
+        item.classList.add("invisible");
+      } else {
+        item.classList.remove("invisible");
+      }
+    });
+  }
+}
+
 const workBtns = document.querySelector(".work__categories");
-const projectContainer = document.querySelector(".work__projects");
 const projectList = document.querySelectorAll(`.project`);
 workBtns.addEventListener("click", (e) => {
   const target = e.target;
@@ -86,15 +101,5 @@ workBtns.addEventListener("click", (e) => {
   if (value === undefined) {
     return;
   }
-  projectContainer.classList.add("anim-out");
-  setTimeout(() => {
-    projectContainer.classList.remove("anim-out");
-    projectList.forEach((item) => {
-      if (value === "all" || value == item.dataset.value) {
-        item.classList.remove("invisible");
-      } else {
-        item.classList.add("invisible");
-      }
-    });
-  }, 300);
+  filterCategory(value);
 });
