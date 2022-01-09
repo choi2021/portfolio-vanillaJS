@@ -622,7 +622,7 @@ button {
 @media screen and (max-width: 768px) {
   :root {
     /* Space */
-    --base-space: 24px;
+    --base-space: 16px;
 
     /* Font weight */
     --weight-bold: 700;
@@ -630,9 +630,9 @@ button {
     --weight-regular: 400;
 
     /* Font-size */
-    --font-large: 36px;
-    --font-medium: 24px;
-    --font-regular: 16px;
+    --font-large: 24px;
+    --font-medium: 16px;
+    --font-regular: 14px;
     --font-small: 12px;
 
     /* size */
@@ -671,8 +671,20 @@ button {
     margin-bottom: var(--base-space);
   }
 
+  .experience__description {
+    font-size: var(--font-small);
+  }
+
   .skillset {
     flex-direction: column;
+  }
+
+  .work__categories {
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+    margin: auto;
+    margin-bottom: var(--base-space);
   }
 
   .category__btn {
