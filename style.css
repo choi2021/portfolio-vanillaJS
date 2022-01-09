@@ -665,6 +665,11 @@ button {
     display: block;
     position: absolute;
     cursor: pointer;
+    top: 24px;
+  }
+
+  .section {
+    padding: var(--base-space);
   }
 
   .about__stacks {
@@ -697,5 +702,12 @@ button {
 
   .project {
     flex-grow: 1;
+  }
+
+  .upBtn {
+    right: 8px;
+    width: var(--count-size);
+    height: var(--count-size);
+    font-size: var(--font-medium);
   }
 }
