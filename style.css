@@ -27,7 +27,7 @@
   --font-small: 16px;
 
   /* size */
-  --count-size: 32px;
+  --count-size: 24px;
   --border-size: 8px;
   --logo-size: 43px;
   --avatar-size: 350px;
@@ -361,9 +361,10 @@ button {
 
 .category__btn {
   font-size: var(--font-regular);
-  padding: 8px 12px;
+  padding: 12px 36px;
   border: 1px solid var(--dim-gray-color);
   border-radius: var(--border-size);
+  position: relative;
 }
 
 .category__btn.active {
@@ -377,20 +378,19 @@ button {
   border-radius: 50%;
   width: var(--count-size);
   height: var(--count-size);
-  line-height: 32px;
+  line-height: var(--count-size);
   background-color: var(--deep-yellow-color);
   margin-left: 8px;
-  position: relative;
-  top: -40px;
-  left: 4px;
+  position: absolute;
+  top: -5px;
+  right: 8px;
   opacity: 0;
   transition: all 300ms ease-in;
 }
 .category__btn.active .category__count,
 .category__btn:hover .category__count {
   opacity: 1;
-  top: 0;
-  left: 0;
+  top: 8px;
 }
 
 .work__projects {
@@ -636,10 +636,10 @@ button {
     --font-small: 12px;
 
     /* size */
-    --count-size: 32px;
+    --count-size: 24px;
     --border-size: 8px;
     --logo-size: 43px;
-    --avatar-size: 250px;
+    --avatar-size: 150px;
     --stack-size: 180px;
     --project-width: 280px;
     --project-height: 250px;
@@ -670,6 +670,7 @@ button {
 
   .section {
     padding: var(--base-space);
+    padding-top: 60px;
   }
 
   .about__stacks {
@@ -691,13 +692,30 @@ button {
   .work__categories {
     display: flex;
     flex-direction: column;
-    width: 65%;
     margin: auto;
     margin-bottom: var(--base-space);
   }
 
   .category__btn {
+    margin: auto;
+    width: 80%;
     padding: 4px 8px;
+    margin-bottom: 4px;
+  }
+
+  .category__count {
+    line-height: 24px;
+    background-color: var(--deep-yellow-color);
+    position: absolute;
+    top: -5px;
+    right: 32px;
+    opacity: 0;
+    transition: all 300ms ease-in;
+  }
+  .category__btn.active .category__count,
+  .category__btn:hover .category__count {
+    opacity: 1;
+    top: 0;
   }
 
   .project {
