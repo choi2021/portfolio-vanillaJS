@@ -13,6 +13,13 @@ document.addEventListener("scroll", (e) => {
   }
 });
 
+// toggle function add
+
+const toggleBtn = document.querySelector(".navbar__toggleBtn");
+toggleBtn.addEventListener("click", () => {
+  menu.classList.toggle("show");
+});
+
 function scrollIntoView(selector) {
   const scrollTo = document.querySelector(selector);
   scrollTo.scrollIntoView({ behavior: "smooth" });
@@ -35,6 +42,7 @@ menu.addEventListener("click", (e) => {
   }
   activeControl(e.target);
   scrollIntoView(section);
+  menu.classList.remove("show");
 });
 
 // Handle click on contact button on home
