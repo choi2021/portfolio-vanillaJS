@@ -70,18 +70,22 @@ upBtn.addEventListener("click", () => {
 
 // project filtering
 
-function activateCategory(target) {
+function activateCategory(value) {
   const activated = document.querySelector(".category__btn.active");
   activated.classList.remove("active");
-  target.classList.add("active");
+  const willBeActivated = document.querySelector(
+    `.category__btn[data-value="${value}"]`
+  );
+  console.log(willBeActivated);
 }
 
 const workBtns = document.querySelector(".work__categories");
 const projectContainer = document.querySelector(".work__projects");
 const projectList = document.querySelectorAll(`.project`);
 workBtns.addEventListener("click", (e) => {
+  const target = e.target;
   const dataset = e.target.dataset;
-  const value = dataset.value || e.target.parentNode.dataset.value;
+  const value = dataset.value || target.parentNode.dataset.value;
   if (value === undefined) {
     return;
   }
@@ -96,8 +100,12 @@ workBtns.addEventListener("click", (e) => {
       }
     });
   }, 300);
-  // activated btn update
-  const target =
-    e.target.nodeName === "BUTTON" ? e.target : e.target.parentNode;
-  activateCategory(target);
+});
+
+// activated btn update
+workBtns.addEventListener("click", (e) => {
+  const target = e.target;
+  const dataset = e.target.dataset;
+  const value = dataset.value || target.parentNode.dataset.value;
+  activateCategory(value);
 });

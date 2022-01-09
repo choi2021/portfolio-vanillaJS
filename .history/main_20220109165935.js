@@ -81,7 +81,7 @@ const projectContainer = document.querySelector(".work__projects");
 const projectList = document.querySelectorAll(`.project`);
 workBtns.addEventListener("click", (e) => {
   const dataset = e.target.dataset;
-  const value = dataset.value || e.target.parentNode.dataset.value;
+  const value = dataset.value || target.parentNode.dataset.value;
   if (value === undefined) {
     return;
   }
