@@ -31,12 +31,6 @@ function scrollIntoView(selector) {
 
 // scroll to the section
 
-function activeControl(target) {
-  const activated = document.querySelector(".navbar__menu__item.active");
-  activated.classList.remove("active");
-  target.classList.add("active");
-}
-
 const menu = document.querySelector(".navbar__menu");
 menu.addEventListener("click", (e) => {
   const dataset = e.target.dataset;
@@ -44,9 +38,9 @@ menu.addEventListener("click", (e) => {
   if (section === undefined) {
     return;
   }
-  activeControl(e.target);
-  scrollIntoView(section);
   menu.classList.remove("show");
+  scrollIntoView(section);
+  selectNavItem(e.target);
 });
 
 // Handle click on contact button on home
@@ -54,6 +48,7 @@ menu.addEventListener("click", (e) => {
 const contactBtn = document.querySelector(".home__contact");
 contactBtn.addEventListener("click", () => {
   scrollIntoView(".contact");
+  selectNavItem(menuList[sectionList.length - 1]);
 });
 
 // make home fade to transparent as the window scrolls down
@@ -78,6 +73,7 @@ document.addEventListener("scroll", () => {
 const upBtn = document.querySelector(".upBtn");
 upBtn.addEventListener("click", () => {
   scrollIntoView(".home");
+  selectNavItem(menuList[0]);
 });
 
 // project filtering
@@ -112,4 +108,68 @@ workBtns.addEventListener("click", (e) => {
   const target =
     e.target.nodeName === "BUTTON" ? e.target : e.target.parentNode;
   activateCategory(target);
+});
+
+// intersection observer
+const sectionClasses = [
+  ".home",
+  ".about",
+  ".skills",
+  ".work",
+  ".testimonials",
+  ".contact",
+];
+const sectionList = sectionClasses.map((className) => {
+  return document.querySelector(className);
+});
+
+const menuList = sectionClasses.map((className) => {
+  return document.querySelector(`[data-section="${className}"]`);
+});
+
+const option = {
+  root: null,
+  rootMargin: "0px",
+  threshold: 0.3,
+};
+
+let selectedNavItem = menuList[0];
+let selectedNavIndex = 0;
+
+function selectNavItem(selected) {
+  selectedNavItem.classList.remove("active");
+  selectedNavItem = selected;
+  selectedNavItem.classList.add("active");
+}
+
+const callback = (entries, observer) => {
+  entries.forEach((entry) => {
+    if (!entry.isIntersecting && entry.intersectionRatio > 0) {
+      const index = sectionList.indexOf(entry.target);
+      // scroll 아래로
+      if (entry.boundingClientRect.y < 0) {
+        selectedNavIndex = index + 1;
+      } else {
+        selectedNavIndex = index - 1;
+      }
+    }
+  });
+};
+
+const observer = new IntersectionObserver(callback, option);
+
+sectionList.forEach((section) => {
+  observer.observe(section);
+});
+
+window.addEventListener("wheel", () => {
+  if (window.scrollY === 0) {
+    selectedNavIndex = 0;
+  } else if (
+    Math.round(window.scrollY + window.innerHeight) ===
+    document.body.clientHeight
+  ) {
+    selectedNavIndex = menuList.length - 1;
+  }
+  selectNavItem(menuList[selectedNavIndex]);
 });
