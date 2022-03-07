@@ -152,7 +152,7 @@ button {
 
 .home {
   padding: calc(3 * var(--base-space)) var(--base-space);
-  background: url(./public/background.jpg) no-repeat center/cover;
+  background: url("/public/home.jpg") no-repeat center/cover;
   text-align: center;
 }
 
